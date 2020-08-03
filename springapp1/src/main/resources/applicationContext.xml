@@ -17,20 +17,27 @@
     <bean id="musicBean3"
           class="ru.constantin.testspring.DrumAndBaseMusic">
     </bean>
-
     <bean id="musicPlayer"
-          class="ru.constantin.testspring.MusicPlayer">
-        <property name="music">
-            <list>
-                <ref bean="musicBean1"/>
-                <ref bean="musicBean2"/>
-                <ref bean="musicBean3"/>
-            </list>
-        </property>
+          class="ru.constantin.testspring.MusicPlayer"
+          scope="prototype">
+        <property name="music" ref="musicBean1"/>
 
-        <!--        <property name="music" ref="musicBean"/>-->
-        <!--        <property name="name" value="${musicPlayer.name}"/>-->
-        <!--        <property name="volume" value="${musicPlayer.volume}"/>-->
+                <property name="name" value="${musicPlayer.name}"/>
+                <property name="volume" value="${musicPlayer.volume}"/>
     </bean>
+<!--    <bean id="musicPlayer"-->
+<!--          class="ru.constantin.testspring.MusicPlayer">-->
+<!--        <property name="music">-->
+<!--            <list>-->
+<!--                <ref bean="musicBean1"/>-->
+<!--                <ref bean="musicBean2"/>-->
+<!--                <ref bean="musicBean3"/>-->
+<!--            </list>-->
+<!--        </property>-->
+
+<!--        &lt;!&ndash;        <property name="music" ref="musicBean"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;        <property name="name" value="${musicPlayer.name}"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;        <property name="volume" value="${musicPlayer.volume}"/>&ndash;&gt;-->
+<!--    </bean>-->
 
 </beans>

@@ -6,44 +6,7 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
-    <context:property-placeholder location="classpath:musicPlayer.properties"/>
 
-    <bean id="musicBean"
-          class="ru.constantin.testspring.ClassicalMusic"
-          scope="singleton"
-          init-method="doMyInit"
-          destroy-method="doMyDestroy"
-          factory-method="getClassicalMusic">
-    </bean>
-
-<!--    <bean id="musicBean2"-->
-<!--          class="ru.constantin.testspring.RockMusic">-->
-<!--    </bean>-->
-<!--    <bean id="musicBean3"-->
-<!--          class="ru.constantin.testspring.DrumAndBaseMusic">-->
-<!--    </bean>-->
-<!--    <bean id="musicPlayer"-->
-<!--          class="ru.constantin.testspring.MusicPlayer"-->
-<!--          scope="prototype">-->
-<!--        <property name="music" ref="musicBean1"/>-->
-
-<!--                <property name="name" value="${musicPlayer.name}"/>-->
-<!--                <property name="volume" value="${musicPlayer.volume}"/>-->
-<!--    </bean>-->
-
-<!--    <bean id="musicPlayer"-->
-<!--          class="ru.constantin.testspring.MusicPlayer">-->
-<!--        <property name="music">-->
-<!--            <list>-->
-<!--                <ref bean="musicBean"/>-->
-<!--                <ref bean="musicBean2"/>-->
-<!--                <ref bean="musicBean3"/>-->
-<!--            </list>-->
-<!--        </property>-->
-
-<!--        &lt;!&ndash;        <property name="music" ref="musicBean"/>&ndash;&gt;-->
-<!--        &lt;!&ndash;        <property name="name" value="${musicPlayer.name}"/>&ndash;&gt;-->
-<!--        &lt;!&ndash;        <property name="volume" value="${musicPlayer.volume}"/>&ndash;&gt;-->
-<!--    </bean>-->
+    <context:component-scan base-package="ru.constantin.testspring"/>
 
 </beans>

@@ -1,22 +1,22 @@
 package ru.constantin.testspring;
 
+import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Component
 public class ClassicalMusic implements Music {
-    private ClassicalMusic() {}
+    List<String> songs = new ArrayList<>();
 
-    public static ClassicalMusic getClassicalMusic (){
-        return new ClassicalMusic();
-    }
-
-    public void doMyInit() {
-        System.out.println("do my initialization");
-    }
-
-    public void doMyDestroy() {
-        System.out.println("doing my destraction");
+    public ClassicalMusic(List<String> songs) {
+        this.songs.add("First classical music");
+        this.songs.add("Second classical music");
+        this.songs.add("Third classical music");
     }
 
     @Override
-    public String getSong() {
-        return "Hungarian Rhapsody";
+    public List getSong() {
+        return songs;
     }
 }

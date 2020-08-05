@@ -1,45 +1,31 @@
 package ru.constantin.testspring;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
+import java.util.*;
+
+enum Genre {
+    CLASSICAL,
+    ROCK
+}
+
+@Component
 public class MusicPlayer {
-    private List<Music> musicList = new ArrayList<>();
-    private String name;
-    private int volume;
+    private Music music1;
+    private Music music2;
 
-    public String getName() {
-        return name;
+    @Autowired
+    public MusicPlayer(@Qualifier("rockMusic") Music music1,
+                       @Qualifier("classicalMusic") Music music2) {
+        this.music1 = music1;
+        this.music2 = music2;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String playMusic(Genre newGenre) {
+        Random random = new Random();
+        return (newGenre.equals(Genre.CLASSICAL)) ? ((String) music2.getSong().get(random.nextInt(3))) :
+                ((String) music1.getSong().get(random.nextInt(3)));
     }
-
-    public int getVolume() {
-        return volume;
-    }
-
-    public void setVolume(int volume) {
-        this.volume = volume;
-    }
-
-    //IoC
-    public MusicPlayer(){}
-
-    public MusicPlayer(List<Music> musicList){
-        this.musicList = musicList;
-    }
-
-    public void setMusic(List<Music> musicList) {
-        this.musicList = musicList;
-    }
-
-    public void playMusic(){
-        for (Music list: musicList) {
-            System.out.println("Song - " + list.getSong());
-        }
-//        System.out.println("Playing: " + music.getSong());
-    }
-
 }

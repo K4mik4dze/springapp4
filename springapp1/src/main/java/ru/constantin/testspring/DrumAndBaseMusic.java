@@ -1,19 +1,17 @@
 package ru.constantin.testspring;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.stereotype.Component;
 
+@Component
 public class DrumAndBaseMusic implements Music{
-    List<String> songs = new ArrayList<>();
+    String song;
 
-    public DrumAndBaseMusic(List<String> songs) {
-        this.songs.add("First Drum music");
-        this.songs.add("Second Drum music");
-        this.songs.add("Third Drum music");
+    public DrumAndBaseMusic() {
+        this.song = "First Drum music";
     }
 
     @Override
-    public List getSong() {
-        return songs;
+    public String getSong() {
+        return song;
     }
 }

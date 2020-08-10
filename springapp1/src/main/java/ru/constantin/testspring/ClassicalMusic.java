@@ -1,22 +1,31 @@
 package ru.constantin.testspring;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
 @Component
 public class ClassicalMusic implements Music {
-    List<String> songs = new ArrayList<>();
+    String song ;
 
-    public ClassicalMusic(List<String> songs) {
-        this.songs.add("First classical music");
-        this.songs.add("Second classical music");
-        this.songs.add("Third classical music");
+    public ClassicalMusic() {
+        this.song = "First classical music";
     }
 
     @Override
-    public List getSong() {
-        return songs;
+    public String getSong() {
+        return song;
+    }
+
+    @PostConstruct
+    public void doMyInit(){
+        System.out.println("Doing my initialization");
+    }
+
+    @PreDestroy
+    public void doMyDestroy(){
+        System.out.println("Doing my destruction");
     }
 }

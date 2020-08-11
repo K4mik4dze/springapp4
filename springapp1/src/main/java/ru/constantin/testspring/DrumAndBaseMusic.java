@@ -2,7 +2,6 @@ package ru.constantin.testspring;
 
 import org.springframework.stereotype.Component;
 
-@Component
 public class DrumAndBaseMusic implements Music{
     String song;
 
